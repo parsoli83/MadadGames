@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MadadAgar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- Audio -->
+    <audio id="split_cell" src="audio/split.mp3"></audio>
+    <audio id="spawn_cell" src="audio/spawn.mp3"></audio>
+</head>
+<body>
+    <div id="gameAreaWrapper">
+        <div id="status"><span class="title">Leaderboard</span></div>
+        <div class="chatbox" id="chatbox">
+            <div>
+                <a id="button-backk" href='https://kfdjfidjfid.com'>بازگشت</a>
+            </div>
+            <ul id="chatList" class="chat-list"></ul>
+            <input id="chatInput" type="text" class="chat-input" placeholder="Chat here..." maxlength="35" />
+        </div>
+        <div id="mobile">
+            <input type="image" id="split" class="split" src="img/split.png" alt="splitBtn">
+            <input type="image" id="feed" class="feed" src="img/feed.png" alt="feedBtn">
+        </div>
+        <canvas tabindex="1" id="cvs"></canvas>
+    </div>
+    <div id="startMenuWrapper">
+        <div id="startMenu">
+            <p style="font-family:Kalameh;">مددگِیم آگار</p>
+            <input type="text" tabindex="0" autofocus placeholder="اسمت رو بگو" id="playerNameInput" maxlength="25" />
+            <b class="input-error">فقط حروف انگلیسی</b>
+            <br />
+            <a onclick="document.getElementById('spawn_cell').play()"><button id="startButton" style="font-family:Kalameh;">شروع</button></a>
+            <button id="spectateButton" style="font-family:Kalameh;">تماشا</button>
+            <button id="settingsButton" style="font-family:Kalameh;">تنظیمات</button>
+            <div>
+                <a id="button-back" href='https://kfdjfidjfid.com'>بازگشت</a>
+            </div>
+            <br />
+            <div id="settings">
+                <h3>تنظیمات</h3>
+                <ul>
+                    <label><input id="visBord" type="checkbox" style="font-family:Kalameh;">اطراف</label>
+                    <label><input id="showMass" type="checkbox" style="font-family:Kalameh;">حجم</label>
+                    <br />
+                    <label><input id="continuity" type="checkbox" style="font-family:Kalameh;">ادامه حرکت</label>
+                    <br />
+                    <label><input id="roundFood" type="checkbox" checked style="font-family:Kalameh;">غذا گرد</label>
+                    <label><input id="darkMode" type="checkbox" style="font-family:Kalameh;">دارک مود</label>
+                </ul>
+            </div>
+            <div id="instructions">
+                <h3 style="font-family:Kalameh;">نحوه بازی</h3>
+                <ul>
+                    <li text-align=right style="font-family:Kalameh;">با تکون دادن موس خودت سلول رو تکون بده</li>
+                    <li style="font-family:Kalameh;">با خوردن غذا و بقیه سلول ها سلول خودت رو قوی کن</li>
+                    <li style="font-family:Kalameh;">اندازه هر سلول بر اساس غذا خورده شدش هست</li>
+                    <li style="font-family:Kalameh;">هدف بازی بزرگ شدن هرچه بیشتر سلوله</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- JS -->
+    <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+
+<!-- Meta Properties -->

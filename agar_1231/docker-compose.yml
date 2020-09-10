@@ -1,0 +1,6 @@
+version: "2"
+services:
+    agar:
+        build: .
+        ports:
+            - 1231:1231

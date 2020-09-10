@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>مددگیم ترون</title>
+	<link rel="stylesheet" href="css/flexgrid.css"/>
+	<link rel="stylesheet" href="css/main.css"/>
+	<link rel="stylesheet" href="css/start-menu.css"/>
+	<link rel="stylesheet" href="css/hud.css"/>
+	<link href="fonts/nicefont.woff" />
+	<link href="fonts/fontawesome.woff" />
+	
+	<script src="scripts/lib/three.min.js"></script>
+	<script src="scripts/lib/ramda.min.js"></script>
+	<script src='scripts/lib/FullScreen.js'></script>
+	<script src="scripts/lib/OrbitControls.js"></script>
+	<script src="scripts/lib/stats.min.js"></script>
+	<script src="scripts/lib/buffer-loader.js"></script>
+	<script src="scripts/sound.js"></script>
+	<script src="scripts/line-intersect.js"></script>
+	<script src="scripts/func.js"></script>
+
+</head>
+<body>
+
+	<div id="stats"></div>
+
+	<div id="player-labels"></div>
+
+	<!-- <input id="chatInput" type="text" maxlength="140" /> -->
+
+	<div id="welcome-msg" class="" style="visibility:visible;">
+
+		<div id="promptbox" class="main-container">
+
+			<div class="container v15">
+			    <div class="vertical-align-wrap">
+			    	<div class="vertical-align vertical-align--bottom">
+			      		<br/>
+						<h4 id="press-z" class="row center margin" style="visibility: visible;direction: rtl;">برای شروع Z بزن</h4>
+						<h4 id="press-x" class="row center margin" style="visibility: visible;direction: rtl;">برای ادامه بازی x رو بزن</h4>
+						<br/>
+						<h1 id="pause-msg" class="margin" style="visibility: visible;direction: rtl;">متوقف شد</h1>
+			    	</div>
+			    </div>
+			</div>
+			
+
+			<div class="container v15">
+			    <div class="vertical-align-wrap">
+			    	<div class="vertical-align vertical-align--middle">
+
+			      		<div id="inputBox" class="btn row center">
+			      			<h3 style="font-size: 8pt;direction: rtl;">نام شما:</h3>
+			      			<input id="usernameInput" type="text" maxlength="26" />
+			      			<hr id="underline"/>
+			      		</div>
+						<i style="font-size: 8pt;direction: rtl;">برای شروع ENTER بزن</i>
+
+			    	</div>
+			    </div>
+			</div>
+			
+
+0			<div class="container v40">
+			    <div class="vertical-align-wrap">
+			    	<div class="vertical-align vertical-align--middle">
+						
+						<div class="row center margin">
+							<h3 class="col col-span-6 right"><b>S</b>&nbsp;←&nbsp;<b>D</b>&nbsp;←&nbsp;<b>F</b>&nbsp;چرخش به چپ &nbsp; &nbsp;</h3>
+							
+							<h3 class="col col-span-6 left">&nbsp; &nbsp;&nbsp;<b>J</b>&nbsp;→&nbsp;<b>K</b>&nbsp;→&nbsp;<b>L</b>&nbsp; چرخش به راست &nbsp; &nbsp;</h3>
+						</div>
+						<br>
+						<h5 class="row center margin">کلیک همزمان دو کلید چرخش 180 درجه است</h5>
+						<br>
+						<h3 class="row center"><b>space</b>&nbsp;- ترمز </h3>
+						<br>
+						<h3 class="row center margin"><b>w</b>&nbsp;- صفحه کامل </h3>
+						<h3 class="row center margin"><b>c</b>&nbsp;- زاویه دید </h3>
+						<br>
+						<h3 class="row center"><b>p</b>&nbsp;- توقف </h3>
+
+			    	</div>
+			    </div>
+			</div>
+
+
+			<div class="container v25">
+			    <div class="vertical-align-wrap">
+			    	<div class="vertical-align vertical-align--middle">
+			
+						<a href="https://www.google.com/chrome/browser/" >
+							<img src="images/chrome.png" width="25"></img>
+						</a>
+			    	</div>
+			    </div>
+			</div>
+
+
+		</div>
+	</div>
+
+
+	
+
+	<div class="row gauges">
+		
+		<div class="col spacer"></div>
+		
+		<div class="row ">
+
+			<div class="gauge-width">
+				<div class="row nested center" id="rubber-val">0.00</div>
+				<span class="row nested bar" id="rubber-bar"></span>
+				<div class="row nested nowrap">
+					<div class="col col-span-3 left" id="rubber-min">0</div>
+					<div class="col col-span-6 center" id="rubber-label">پلاستیک</div>
+					<div class="col col-span-3 right" id="rubber-max">5</div>
+				</div>
+			</div>
+
+			<div class="col spacer"></div>
+
+			<div class="gauge-width">
+				<div class="row nested center" id="speed-val">0.00</div>
+				<span class="row nested bar" id="speed-bar"></span>
+				<div class="row nested nowrap">
+					<div class="col col-span-3 left" id="speed-min">0</div>
+					<div class="col col-span-6 center" id="speed-label">سرعت</div>
+					<div class="col col-span-3 right" id="speed-max">5</div>
+				</div>
+			</div>
+
+			<div class="col spacer"></div>
+
+			<div class="gauge-width">
+				<div class="row nested center" id="brake-val">0.00</div>
+				<span class="row nested bar" id="brake-bar"></span>
+				<div class="row nested nowrap">
+					<div class="col col-span-3 left" id="brake-min">0</div>
+					<div class="col col-span-6 center" id="brake-label">ترمز ها</div>
+					<div class="col col-span-3 right" id="brake-max">5</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="col ping">
+			<div class="row nested nowrap">
+				کاربران <span id="numUsers"></span>
+			</div>
+			<div class="row nested nowrap">
+				پینگ <span id="ping">-</span>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="scripts/config.js"></script>
+	<script src="scripts/init.js"></script>
+	<script src="scripts/object-factory.js"></script>
+	<script src="scripts/main.js"></script>
+	<script src="scripts/keyboard.js"></script>
+	<script src="scripts/welcome.js"></script>
+</body>
+</html>

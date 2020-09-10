@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>برج بلوکی</title>
+  <link rel="stylesheet" href="/static//style.css">
+	<style> 
+	@font-face {
+		font-family: Kalameh;
+		src: url(Kalameh_‌Black.ttf);
+	}
+
+	div {
+		font-family: Kalameh;
+	}
+	</style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<meta name="viewport" content="width=device-width,user-scalable=no">
+
+<div id="container">
+	<div id="game"></div>
+	<div id="score">0</div>
+	<div id="instructions">کلیک کن تا صفحات رو روی هم بگزاری</div>
+	<div class="game-over">
+		<h2>باختی</h2>
+		<p>ایراد نداره تلاشتو کردی</p>
+		<p>برای شروع کلیک کن</p>
+	</div>
+	<div class="game-ready">
+		<div id="start-button">شروع</div>
+		<div></div>
+	</div>
+</div>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script><script  src="/static//script.js"></script>
+
+</body>
+</html>
